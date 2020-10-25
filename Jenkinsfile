@@ -5,7 +5,7 @@
     stages{
         stage('test'){
             steps{
-                sh 'npm run testci'
+                sh '/usr/bin/npm run testci'
             }
         }
     }
