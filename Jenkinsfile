@@ -13,6 +13,11 @@
                 sh 'npm install'
                 sh 'npm run testci'
             }
+             post {
+                 always {
+                     junit 'output/coverage/jest/junit.xml'
+                }
+            }
         }
          stage('build'){
             when{
