@@ -1,5 +1,5 @@
  pipeline{
-     agent any
+    agent any
     stages{
         stage('test'){
             steps{
@@ -7,9 +7,8 @@
                 docker.image('node:14-alpine').inside{
                     sh '/usr/bin/npm run testci'
                     }
+                }
             }
-            }
-            
         } 
     }
 }
