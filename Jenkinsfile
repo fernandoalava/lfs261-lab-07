@@ -12,7 +12,7 @@
                 sh 'npm run testci'
             }
         }
-         stage('test'){
+         stage('build'){
             steps{
                 sh 'npm install'
                 sh 'npm run build'
