@@ -12,6 +12,13 @@
                 sh 'npm run testci'
             }
         }
+         stage('test'){
+            steps{
+                sh 'npm install'
+                sh 'npm run build'
+                archiveArtifacts artifacts: '**/build/*.*', fingerprint: true
+            }
+        }
     } 
 }
 
