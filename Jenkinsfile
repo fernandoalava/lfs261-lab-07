@@ -18,6 +18,10 @@
             }
         }
         stage('sonarqube'){
+            when{
+                branch 'master'
+                changeset "**/src/**"
+            }
             environment{
                 sonarpath = tool 'SonarScanner'
             }
