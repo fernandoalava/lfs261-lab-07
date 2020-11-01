@@ -19,6 +19,19 @@
                 }
             }
         }
+        stage('sonarqube'){
+            when{
+                changeset "**/src/**"
+            }
+            environment{
+                sonarpath = tool 'SonarScanner'
+            }
+             steps{
+                 withSoanrQubeEnv('sonar'){
+                     sh "${sonarpath}/bin/sonar-scanner -Dproject.settins.settings=sonar-project.properties"
+                 }
+             }
+        }
          stage('build'){
             when{
                 branch 'master'
