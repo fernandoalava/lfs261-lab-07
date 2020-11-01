@@ -24,7 +24,7 @@
                 sonarpath = tool 'SonarScanner'
             }
              steps{
-                 withSonarQubeEnv('SonarScanner'){
+                 withSonarQubeEnv('sonarqube'){
                      sh "${sonarpath}/bin/sonar-scanner -Dproject.settins.settings=sonar-project.properties"
                  }
              }
