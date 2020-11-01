@@ -1,10 +1,9 @@
  pipeline{
-    agent none
+    agent {
+        docker { image 'falavaz/node:14custom' }
+    }
     stages{
         stage('test'){
-            agent {
-                docker { image 'node:14-alpine' }
-            }
             when{
                 changeset "**/src/**"
             }
@@ -19,12 +18,8 @@
             }
         }
         stage('sonarqube'){
-            agent any
             environment{
                 sonarpath = tool 'SonarScanner'
-            }
-            when{
-                branch "master"
             }
              steps{
                  withSonarQubeEnv('sonarqube'){
@@ -33,9 +28,6 @@
              }
         }
          stage('build'){
-            agent {
-                docker { image 'node:14-alpine' }
-            }
             when{
                 branch 'master'
                 changeset "**/src/**"
