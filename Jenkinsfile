@@ -4,7 +4,9 @@
     }
     stages{
         stage('test'){
-      
+            when{
+                changeset "**/src/**"
+            }
             steps{
                 sh 'npm install'
                 sh 'npm run testci'
@@ -16,7 +18,10 @@
             }
         }
         stage('sonarqube'){
-     
+            when{
+                branch 'master'
+                changeset "**/src/**"
+            }
             environment{
                 sonarpath = tool 'SonarScanner'
             }
