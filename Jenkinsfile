@@ -1,6 +1,6 @@
  pipeline{
     agent {
-        docker { image 'node:14-alpine' }
+        docker { image 'falavaz/node:14custom' }
     }
     stages{
         stage('test'){
@@ -18,7 +18,6 @@
             }
         }
         stage('sonarqube'){
-            agent any
             environment{
                 sonarpath = tool 'SonarScanner'
             }
