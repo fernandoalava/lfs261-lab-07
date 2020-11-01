@@ -1,11 +1,10 @@
  pipeline{
-
-    agent {
-        docker { image 'node:14-alpine' }
-    }
-
+    agent none
     stages{
         stage('test'){
+            agent {
+                docker { image 'node:14-alpine' }
+            }
             when{
                 changeset "**/src/**"
             }
@@ -33,6 +32,9 @@
              }
         }
          stage('build'){
+            agent {
+                docker { image 'node:14-alpine' }
+            }
             when{
                 branch 'master'
                 changeset "**/src/**"
