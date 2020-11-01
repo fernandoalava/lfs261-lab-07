@@ -21,7 +21,7 @@
         }
         stage('sonarqube'){
             agent {
-               docker { image 'maven:3-alpine' }
+               docker { image 'maven:alpine' }
             }
             environment{
                 sonarpath = tool 'SonarScanner'
